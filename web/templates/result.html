@@ -4,15 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Short URL Created</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+        color: #0f172a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 620px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        padding: 28px;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 1.6rem;
+      }
+
+      .row {
+        margin: 10px 0;
+        line-height: 1.5;
+      }
+
+      .label {
+        font-weight: 700;
+        color: #334155;
+      }
+
+      .link {
+        color: #4338ca;
+        word-break: break-all;
+      }
+
+      .actions {
+        margin-top: 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 10px;
+        background: #4f46e5;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 10px 14px;
+      }
+
+      .btn:hover {
+        background: #4338ca;
+      }
+    </style>
   </head>
   <body>
-    <h1>Short URL Created</h1>
+    <main class="card">
+      <h1>Short URL Created</h1>
 
-    <p><strong>Short URL:</strong> <a href="{{.short_url}}">{{.short_url}}</a></p>
-    <p><strong>Original URL:</strong> {{.original_url}}</p>
-    <p><strong>Code:</strong> {{.code}}</p>
-    <p><strong>Expires At:</strong> {{.expires_at}}</p>
+      <p class="row"><span class="label">Short URL:</span> <a class="link" href="{{.short_url}}">{{.short_url}}</a></p>
+      <p class="row"><span class="label">Original URL:</span> {{.original_url}}</p>
+      <p class="row"><span class="label">Code:</span> {{.code}}</p>
+      <p class="row"><span class="label">Expires At:</span> {{.expires_at}}</p>
 
-    <p><a href="/">Create another</a></p>
+      <p class="actions"><a class="btn" href="/">Create another</a></p>
+    </main>
   </body>
 </html>

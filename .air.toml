@@ -1,0 +1,21 @@
+root = "."
+tmp_dir = "tmp/air"
+
+[build]
+cmd = "go build -o ./tmp/air/urlshortener ./cmd/server"
+bin = "./tmp/air/urlshortener"
+full_bin = "./tmp/air/urlshortener"
+include_ext = ["go", "html", "tpl", "tmpl"]
+exclude_dir = ["tmp", "vendor", ".git"]
+exclude_file = []
+exclude_regex = []
+exclude_unchanged = false
+follow_symlink = false
+poll = false
+delay = 200
+stop_on_error = true
+send_interrupt = true
+kill_delay = 500
+
+[screen]
+clear_on_rebuild = true

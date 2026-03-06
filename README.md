@@ -46,7 +46,7 @@ cp .env.docker.example .env
 2. Start app + postgres:
 
 ```bash
-docker compose up --build
+docker compose up
 ```
 
 3. Open:
@@ -58,11 +58,12 @@ docker compose up --build
 
 - `DATABASE_URL` is injected automatically by `docker-compose.yml`.
 - Database schema is migrated by the app on startup using migration files in `internal/storage/postgres/migrations`.
+- Docker compose is configured for development: source is mounted and `air` live-reloads on `.go` and template file changes.
 - If you need a clean DB re-init, run:
 
 ```bash
 docker compose down -v
-docker compose up --build
+docker compose up
 ```
 
 ## API Endpoints

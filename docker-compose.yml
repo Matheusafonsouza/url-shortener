@@ -18,10 +18,9 @@ services:
       retries: 10
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: golang:1.23-alpine
     container_name: urlshortener-app
+    working_dir: /app
     restart: unless-stopped
     depends_on:
       postgres:
@@ -34,8 +33,20 @@ services:
       READ_TIMEOUT: ${READ_TIMEOUT:-5s}
       WRITE_TIMEOUT: ${WRITE_TIMEOUT:-10s}
       SHUTDOWN_TIMEOUT: ${SHUTDOWN_TIMEOUT:-10s}
+      GIN_MODE: debug
+    volumes:
+      - ./:/app
+      - go_pkg_cache:/go/pkg
+      - go_build_cache:/root/.cache/go-build
+    command: >
+      sh -c "apk add --no-cache git &&
+      go mod tidy &&
+      go install github.com/air-verse/air@latest &&
+      /go/bin/air -c .air.toml"
     ports:
       - "8080:8080"
 
 volumes:
   postgres_data:
+  go_pkg_cache:
+  go_build_cache:

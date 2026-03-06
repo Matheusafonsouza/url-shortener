@@ -1,0 +1,32 @@
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.docker.example
+
+# Go build artifacts
+bin/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace/cache artifacts
+*.coverprofile
+coverage.out
+
+# Editor/OS
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and temp
+*.log
+tmp/
+
+# Docker
+docker-compose.override.yml

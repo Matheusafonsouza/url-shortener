@@ -27,6 +27,10 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
+	if err := postgres.RunMigrations(ctx, cfg.DatabaseURL); err != nil {
+		log.Fatalf("failed to run migrations: %v", err)
+	}
+
 	dbPool, err := postgres.Connect(ctx, cfg.DatabaseURL)
 	if err != nil {
 		log.Fatalf("failed to connect to database: %v", err)
